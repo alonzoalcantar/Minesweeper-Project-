@@ -3,8 +3,7 @@
 
 ** WireFrame 
 
-![MyWireFrame](/downloads/Screen Shot 2022-10-13 at 1.55.20 AM)
-
+![MyWireFrame](https://i.imgur.com/DXwo56y.png)
 
 
 //function to start game and begin clock 
