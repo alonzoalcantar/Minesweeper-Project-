@@ -1,34 +1,23 @@
-** Minesweeper 
+## Minesweeper
 
-
-** WireFrame 
+## WireFrame
 
 ![MyWireFrame](https://i.imgur.com/DXwo56y.png)
 
+//function to start game and begin clock - clock will run as long as the game is active
 
-//function to start game and begin clock 
+//player choice function when player choses a tile - as the player hovers over a square it will allow them to make a choice
 
+//function to verify move is valid - makes sure that the square the player chose has not already been selected this game
 
+//function to check if mine is nearby - if square is clear, checks if mine is nearby and assigns value to square depending on amount of mines
 
-//player choice function when player choses a tile 
+// function to end game if mine is clicked - if player choses square with mine, all the mines will be revealed and the game will end
 
+// function to reset game - when reset button is clicked then the same will begin again and the board will randomize
 
-//function to verify move is valid 
+// function to radomize mines every game - places mines randomly across all squares
 
-//fucntion to check if mine is nearby 
+//function if player places flag - marks square with a flag to remind plater of there potential mines may be
 
-
-// function to end game if mine is clicked 
-
-
-// function to reset game 
-
-// fucntion to radomize mines every game 
-
-
-//fucntion if player places flag 
-
-
-// function for time elapsed
-
-
+// function for time elapsed - timer on screen for player to be aware of how long their board/game has been active
