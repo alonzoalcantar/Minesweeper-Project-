@@ -1,3 +1,30 @@
-body{
-    background-color: blue;
+.board{
+    display: grid;
+    grid-template-columns: auto auto auto auto
+    auto auto auto auto;
+    width: 500px;
+    height: 500px;
+    margin:auto;
+    border-style: solid ;
+    border-color: black;
+    padding: 30px
+
+}
+
+.square{
+    border-style: solid;
+    border-color: black;
+}
+
+.display{
+    margin: auto;
+    text-align: center;
+}
+
+.controls {
+    text-align: center;
+    padding: 40px;
+}
+h3 {
+    text-align: left;
 }
