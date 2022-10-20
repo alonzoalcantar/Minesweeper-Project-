@@ -175,7 +175,7 @@ const gameIsOver = (square) => {
     // Show all mines if player chooses square with mine 
     squares.forEach(square => {
         if (square.classList.contains("mine")){
-            square.innerHTML = "boom!";
+            square.innerHTML = "🧨";
         }
     })
 }
@@ -190,7 +190,7 @@ const placeFlag = (square) => {
     if (!square.classList.contains("clicked") && (flagsInGame < minesInGame)){
         if (!square.classList.contains("flagsInGame")){
             square.classList.add("flagsInGame");
-            square.innerHTML = "flag!";
+            square.innerHTML = "🏴‍☠️";
             flagsInGame ++
             minesweeperVictory();
         } else {
