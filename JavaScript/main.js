@@ -30,6 +30,8 @@ const flaggedSquare = "Flag on Square";
 
 
 
+
+
 //Function to create board 
 
 const createBoard = () => {
@@ -40,6 +42,9 @@ const createBoard = () => {
         square.classList.add(randomizeMine[i]);
         board.appendChild(square);
         squares.push(square);
+        square.addEventListener("click", (e) => {
+            playerChoice(square);
+        })
     }
     //adds numbers to clear squares for amount of mines nearby based on position
     for (i = 0; i < squares.length; i++) {
@@ -55,9 +60,9 @@ const createBoard = () => {
             // checks top right side
             if (i > 7 && !boardRight && squares[i +1 -8].classList.contains("mine")) mineTotal ++;
             // checks top side 
-            if (i > 8 && squares[i - 8].classList.contains("mine")) mineTotal ++;
+            if (i > 8 && squares[i -8].classList.contains("mine")) mineTotal ++;
             // checks bottom side 
-            if (i < 53 && squares[i + 8].classList.contains("mine")) mineTotal ++;
+            if (i < 53 && squares[i +8].classList.contains("mine")) mineTotal ++;
             // cheks top left side
             if (i > 9 && !boardLeft && squares[i -1 -8].classList.contains("mine")) mineTotal ++;
             //checks right side
@@ -65,7 +70,7 @@ const createBoard = () => {
             // checks bottom left side
             if (i < 54 && !boardLeft && squares[i -1 +8].classList.contains("mine")) mineTotal ++;
             // checks bottom right 
-            if (i < 52 && !boardRight && squares[i + 8].classList.contains("mine")) mineTotal ++;
+            if (i < 52 && !boardRight && squares[i +8].classList.contains("mine")) mineTotal ++;
             
             squares[i].setAttribute("minesNearby", mineTotal);
     }
@@ -74,6 +79,13 @@ const createBoard = () => {
 }
 createBoard();
 
+
+// Function for playerChoice 
+
+const playerChoice = (square) => {
+    if (square.classList.contains("mine"));
+    alert("OOOPS!! BOOOM!!");
+}
 
 
 
