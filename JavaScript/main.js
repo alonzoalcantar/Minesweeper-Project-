@@ -8,7 +8,8 @@ const timeElapsed = document.querySelector(".timer");
 
 const board = document.querySelector(".board");
 const mines = Array(minesInGame).fill("mine");
-const emptySquares = Array(8*8 - minesInGame).fill("clear");
+const clearSquares = Array(8*8 - minesInGame).fill("clear");
+const boardArray = clearSquares.concat(mines);
 
 const hiddenSquare = "Hidden";
 const mineOnSquare = "Mine On Square";
@@ -42,9 +43,9 @@ const createBoard = () => {
 }
 createBoard();
 
-console.log(emptySquares)
-console.log(mines)
-
+console.log(clearSquares);
+console.log(mines);
+console.log(boardArray);
 
 
 
