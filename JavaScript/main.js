@@ -83,8 +83,17 @@ createBoard();
 // Function for playerChoice 
 
 const playerChoice = (square) => {
-    if (square.classList.contains("mine"));
-    alert("OOOPS!! BOOOM!!");
+    if (square.classList.contains("mine")){
+        console.log("oops!!Boom!!");
+    } else {
+        let mineNumber = square.getAttribute("minesNearby");
+        if (mineNumber != 0) {
+            square.classList.add("clicked");
+            square.innerHTML = mineNumber;
+            return
+        }
+    }
+
 }
 
 

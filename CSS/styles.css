@@ -32,3 +32,6 @@ h3 {
 .mine { 
     background-color: black;
 }
+.clicked {
+    background-color: blueviolet;
+}
