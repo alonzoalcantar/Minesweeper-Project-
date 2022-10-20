@@ -6,7 +6,6 @@ let squares = [];
 let gameIsActive = true;
 let plantingFlag = false;
 let minesInGame = 10;
-let i = 0;
 
 //Constant variables
 
@@ -20,8 +19,7 @@ const mines = Array(minesInGame).fill("mine");
 const clearSquares = Array(8*8 - minesInGame).fill("clear");
 const boardArray = clearSquares.concat(mines);
 const randomizeMine = boardArray.sort(() => Math.random() -0.5);
-const boardLeft = (i % 8 === 0);
-const boardRight = (i % 8 === 8 - 1);
+
 
 //Text Variables
 const hiddenSquare = "Hidden";
@@ -46,11 +44,29 @@ const createBoard = () => {
     //adds numbers to clear squares for amount of mines nearby based on position
     for (i = 0; i < squares.length; i++) {
         let mineTotal = 0;
+        const boardLeft = (i % 8 === 0);
+        const boardRight = (i % 8 === 8 - 1);
+
+
         if (squares[i].classList.contains("clear")){
+
+            // checks left side
             if (i > 0 && !boardLeft && squares[i -1].classList.contains("mine")) mineTotal ++;
+            // checks top right side
             if (i > 7 && !boardRight && squares[i +1 -8].classList.contains("mine")) mineTotal ++;
-
-
+            // checks top side 
+            if (i > 8 && squares[i - 8].classList.contains("mine")) mineTotal ++;
+            // checks bottom side 
+            if (i < 53 && squares[i + 8].classList.contains("mine")) mineTotal ++;
+            // cheks top left side
+            if (i > 9 && !boardLeft && squares[i -1 -8].classList.contains("mine")) mineTotal ++;
+            //checks right side
+            if (i < 62 && !boardRight && squares[i +1].classList.contains("mine")) mineTotal ++;
+            // checks bottom left side
+            if (i < 54 && !boardLeft && squares[i -1 +8].classList.contains("mine")) mineTotal ++;
+            // checks bottom right 
+            if (i < 52 && !boardRight && squares[i + 8].classList.contains("mine")) mineTotal ++;
+            
             squares[i].setAttribute("minesNearby", mineTotal);
     }
 }
