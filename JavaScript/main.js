@@ -48,9 +48,14 @@ const createBoard = () => {
             playerChoice(square);
         })
 
+        square.oncontextmenu = ((e) => {
+            e.preventDefault();
+            placeFlag(square);
+       }
+
 
     
-    }
+    )}
     //adds numbers to clear squares for amount of mines nearby based on position
     for (i = 0; i < squares.length; i++) {
         let mineTotal = 0;
@@ -183,15 +188,30 @@ const gameIsOver = (square) => {
 
 const placeFlag = (square) => {
     if (gameHasEnded) return;
-    if (square.classList.contains("clicked") && (flagsInGame < minesInGame)){
+    if (!square.classList.contains("clicked") && (flagsInGame < minesInGame)){
         if (!square.classList.contains("flagsInGame")){
             square.classList.add("flagsInGame");
             square.innerHTML = "flag!";
             flagsInGame ++
+            minesweeperVictory();
         } else {
             square.classList.remove("flagsInGame");
             square.innerHTML = "";
             flagsInGame --
+        }
+    }
+}
+
+
+// Function to check if the game has been won and all mines have been found 
+const minesweeperVictory = () => {
+    let rounds = 0;
+    for (i = 0; i < squares.length; i++){
+        if (squares[i].classList.contains("flagsInGame") && squares[i].classList.contains("mine")) {
+            rounds ++
+        }
+        if (rounds === minesInGame){
+            console.log("You Won!");
         }
     }
 }
