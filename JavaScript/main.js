@@ -3,6 +3,7 @@ console.log("hello");
 
 //What will change in the game
 let squares = [];
+let width = 8;
 let gameHasEnded = false;
 let minesInGame = 10;
 let flagsInGame = 0;
@@ -16,7 +17,7 @@ const timeElapsed = document.querySelector(".timer");
 //Board Variables
 const board = document.querySelector(".board");
 const mines = Array(minesInGame).fill("mine");
-const clearSquares = Array(8*8 - minesInGame).fill("clear");
+const clearSquares = Array(width*width - minesInGame).fill("clear");
 const boardArray = clearSquares.concat(mines);
 const randomizeMine = boardArray.sort(() => Math.random() -0.5);
 
@@ -36,7 +37,7 @@ const flaggedSquare = "Flag on Square";
 
 const createBoard = () => {
     //creates divs and randomizes mine placement on board
-    for (i = 0; i < 8*8; i++){
+    for (i = 0; i < width*width; i++){
         const square = document.createElement("div");
         square.setAttribute("id", i);
         square.classList.add(randomizeMine[i]);
@@ -59,8 +60,8 @@ const createBoard = () => {
     //adds numbers to clear squares for amount of mines nearby based on position
     for (i = 0; i < squares.length; i++) {
         let mineTotal = 0;
-        const boardLeft = (i % 8 === 0);
-        const boardRight = (i % 8 === 8 - 1);
+        const boardLeft = (i % width === 0);
+        const boardRight = (i % width === width -1);
 
 
         if (squares[i].classList.contains("clear")){
@@ -68,19 +69,19 @@ const createBoard = () => {
             // checks left side
             if (i > 0 && !boardLeft && squares[i -1].classList.contains("mine")) mineTotal ++;
             // checks top right side
-            if (i > 7 && !boardRight && squares[i +1 -8].classList.contains("mine")) mineTotal ++;
+            if (i > 7 && !boardRight && squares[i +1 -width].classList.contains("mine")) mineTotal ++;
             // checks top side 
-            if (i > 8 && squares[i -8].classList.contains("mine")) mineTotal ++;
+            if (i > 8 && squares[i -width].classList.contains("mine")) mineTotal ++;
             // checks bottom side 
-            if (i < 53 && squares[i +8].classList.contains("mine")) mineTotal ++;
+            if (i < 53 && squares[i +width].classList.contains("mine")) mineTotal ++;
             // cheks top left side
-            if (i > 9 && !boardLeft && squares[i -1 -8].classList.contains("mine")) mineTotal ++;
+            if (i > 9 && !boardLeft && squares[i -1 -width].classList.contains("mine")) mineTotal ++;
             //checks right side
             if (i < 62 && !boardRight && squares[i +1].classList.contains("mine")) mineTotal ++;
             // checks bottom left side
-            if (i < 54 && !boardLeft && squares[i -1 +8].classList.contains("mine")) mineTotal ++;
+            if (i < 54 && !boardLeft && squares[i -1 +width].classList.contains("mine")) mineTotal ++;
             // checks bottom right 
-            if (i < 52 && !boardRight && squares[i +8].classList.contains("mine")) mineTotal ++;
+            if (i < 52 && !boardRight && squares[i +width].classList.contains("mine")) mineTotal ++;
             
             squares[i].setAttribute("minesNearby", mineTotal);
     }
@@ -94,9 +95,6 @@ createBoard();
 
 const playerChoice = (square) => {
     let squareID = square.id;
-
-
-
     if (gameHasEnded) return;
     if (square.classList.contains("clicked") || square.classList.contains("flag")) return;
     if (square.classList.contains("mine")){
@@ -115,30 +113,30 @@ const playerChoice = (square) => {
 }
 
 
-// Function verifys the  status of near by squares once the player makes a choice 
+// Function verifys the status of near by squares once the player makes a choice 
 
 const verifyPlayerChoice = (square , squareID) => {
-    const boardLeft = (squareID % 8 === 0);
-    const boardRight = (squareID % 8 === 8 -1);
+    const boardLeft = (squareID % width === 0);
+    const boardRight = (squareID % width === width -1);
 
     setTimeout (() => {
         if (squareID > 0 && !boardLeft) {
-            const newSquareId = squares[parseInt(squareID) -1].id;
-            const newSquare = document.getElementById(newSquareId);
-            playerChoice(newSquare,newSquareId);
-        }
-        if (squareID > 7 && !boardRight) {
-            const newSquareID = squares[parseInt(squareID) +1 -8].id;
+            const newSquareID = squares[parseInt(squareID) -1].id;
             const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
-        if (squareID > 8) {
-            const newSquareID = squares[parseInt(squareID) -8].id;
+        if (squareID > 7 && !boardRight) {
+            const newSquareID = squares[parseInt(squareID) +1 -width].id;
+            const newSquare = document.getElementById(newSquareID);
+            playerChoice(newSquare, newSquareID);
+        }
+        if (squareID > width) {
+            const newSquareID = squares[parseInt(squareID) -width].id;
             const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID > 9 && !boardLeft) {
-            const newSquareID = squares[parseInt(squareID) -1 -8].id;
+            const newSquareID = squares[parseInt(squareID) -1 -width].id;
             const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
@@ -148,17 +146,17 @@ const verifyPlayerChoice = (square , squareID) => {
             playerChoice(newSquare, newSquareID);
         }
         if (squareID < 54 && !boardLeft) {
-            const newSquareID = squares[parseInt(squareID) -1 +8].id;
+            const newSquareID = squares[parseInt(squareID) -1 +width].id;
             const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID < 52 && !boardRight) {
-            const newSquareID = squares[parseInt(squareID) +1 +8].id;
+            const newSquareID = squares[parseInt(squareID) +1 +width].id;
             const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID < 53) {
-            const newSquareID = squares[parseInt(squareID) +8].id;
+            const newSquareID = squares[parseInt(squareID) +width].id;
             const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
@@ -169,7 +167,7 @@ const verifyPlayerChoice = (square , squareID) => {
 // Function ends game if square with mine is chosen
 
 const gameIsOver = (square) => {
-    console.log("boom!");
+    alert("boom!");
     gameHasEnded = true;
 
 
@@ -211,7 +209,7 @@ const minesweeperVictory = () => {
             rounds ++
         }
         if (rounds === minesInGame){
-            console.log("You Won!");
+            alert("You Won!");
             gameHasEnded = true;
         }
     }
@@ -219,7 +217,8 @@ const minesweeperVictory = () => {
 
 
 const resetBoard = () => {
-    createBoard();
+    location.reload();
+    
 }
 
 resetButton.addEventListener("click", resetBoard);
