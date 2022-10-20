@@ -97,7 +97,7 @@ const playerChoice = (square) => {
 
 
 
-    if (gameHasEnded) return 
+    if (gameHasEnded) return;
     if (square.classList.contains("clicked") || square.classList.contains("flag")) return;
     if (square.classList.contains("mine")){
         gameIsOver(square);
@@ -218,6 +218,11 @@ const minesweeperVictory = () => {
 }
 
 
+const resetBoard = () => {
+    createBoard();
+}
+
+resetButton.addEventListener("click", resetBoard);
 
 //Test constant variable values 
 // console.log(clearSquares);

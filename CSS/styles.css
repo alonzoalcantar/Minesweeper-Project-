@@ -31,7 +31,21 @@ h3 {
 
 .mine { 
     background-color: black;
+    text-align: center;
+
+}
+.clear {
+    text-align: center;
+
 }
 .clicked {
+    background-color: gray;
+  
+}
+.flagsInGame {
     background-color: blueviolet;
+}
+.board div {
+    height: 50px;
+    width: 50px;
 }
