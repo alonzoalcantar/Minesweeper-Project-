@@ -12,7 +12,7 @@ let flagsInGame = 0;
 
 //Display Variables
 const resetButton = document.querySelector("#reset");
-const timeElapsed = document.querySelector(".timer");
+
 
 //Board Variables
 const board = document.querySelector(".board");
@@ -71,17 +71,18 @@ const createBoard = () => {
             // checks top right side
             if (i > 7 && !boardRight && squares[i +1 -width].classList.contains("mine")) mineTotal ++;
             // checks top side 
-            if (i > 8 && squares[i -width].classList.contains("mine")) mineTotal ++;
-            // checks bottom side 
-            if (i < 53 && squares[i +width].classList.contains("mine")) mineTotal ++;
+            if (i > 7 && squares[i -width].classList.contains("mine")) mineTotal ++;
+          
             // cheks top left side
-            if (i > 9 && !boardLeft && squares[i -1 -width].classList.contains("mine")) mineTotal ++;
+            if (i > 7 && !boardLeft && squares[i -1 -width].classList.contains("mine")) mineTotal ++;
             //checks right side
-            if (i < 62 && !boardRight && squares[i +1].classList.contains("mine")) mineTotal ++;
+            if (i < 64 && !boardRight && squares[i +1].classList.contains("mine")) mineTotal ++;
             // checks bottom left side
-            if (i < 54 && !boardLeft && squares[i -1 +width].classList.contains("mine")) mineTotal ++;
+            if (i < 56 && !boardLeft && squares[i -1 +width].classList.contains("mine")) mineTotal ++;
             // checks bottom right 
-            if (i < 52 && !boardRight && squares[i +width].classList.contains("mine")) mineTotal ++;
+            if (i < 56 && !boardRight && squares[i +1 +width].classList.contains("mine")) mineTotal ++;
+            // checks bottom side 
+            if (i < 56 && squares[i +width].classList.contains("mine")) mineTotal ++;
             
             squares[i].setAttribute("minesNearby", mineTotal);
     }
@@ -215,7 +216,7 @@ const minesweeperVictory = () => {
     }
 }
 
-
+// Function to reset the game from begining, reloads page
 const resetBoard = () => {
     location.reload();
     
@@ -228,4 +229,6 @@ resetButton.addEventListener("click", resetBoard);
 // console.log(mines);
 // console.log(boardArray);
 // console.log(randomizeMine);
-console.log(squares[i]);
+//console.log(squares[i]);
+
+// Illerdon is the goat
