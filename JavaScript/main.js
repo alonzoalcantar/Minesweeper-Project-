@@ -212,6 +212,7 @@ const minesweeperVictory = () => {
         }
         if (rounds === minesInGame){
             console.log("You Won!");
+            gameHasEnded = true;
         }
     }
 }
