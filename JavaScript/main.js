@@ -3,7 +3,7 @@ console.log("hello");
 
 //What will change in the game
 let squares = [];
-let gameIsActive = true;
+let gameHasEnded = false;
 let plantingFlag = false;
 let minesInGame = 10;
 
@@ -87,10 +87,10 @@ const playerChoice = (square) => {
 
 
 
-    if (gameIsActive = false ) return 
+    if (gameHasEnded) return 
     if (square.classList.contains("clicked") || square.classList.contains("flag")) return;
     if (square.classList.contains("mine")){
-        console.log("oops!!Boom!!");
+        gameIsOver(square);
     } else {
         let mineNumber = square.getAttribute("minesNearby");
         if (mineNumber != 0) {
@@ -152,10 +152,24 @@ const verifyPlayerChoice = (square , squareID) => {
             const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
-    }, 10)
+    }, 30)
 }
 
 
+// Function ends game if square with mine is chosen
+
+const gameIsOver = (square) => {
+    console.log("boom!");
+    gameHasEnded = true;
+
+
+    // Show all mines if player chooses square with mine 
+    squares.forEach(square => {
+        if(square.classList.contains("mine")){
+            square.innerHTML = "boom!";
+        }
+    })
+}
 
 
 
