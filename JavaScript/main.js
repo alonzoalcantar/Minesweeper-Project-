@@ -119,37 +119,37 @@ const verifyPlayerChoice = (square , squareID) => {
         }
         if (squareID > 7 && !boardRight) {
             const newSquareID = squares[parseInt(squareID) +1 -8].id;
-            const newSquare = document.getElementById(newSquareId);
+            const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID > 8) {
             const newSquareID = squares[parseInt(squareID) -8].id;
-            const newSquare = document.getElementById(newSquareId);
+            const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID > 9 && !boardLeft) {
             const newSquareID = squares[parseInt(squareID) -1 -8].id;
-            const newSquare = document.getElementById(newSquareId);
+            const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID < 62 && !boardRight) {
             const newSquareID = squares[parseInt(squareID) +1].id;
-            const newSquare = document.getElementById(newSquareId);
+            const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID < 54 && !boardLeft) {
             const newSquareID = squares[parseInt(squareID) -1 +8].id;
-            const newSquare = document.getElementById(newSquareId);
+            const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID < 52 && !boardRight) {
             const newSquareID = squares[parseInt(squareID) +1 +8].id;
-            const newSquare = document.getElementById(newSquareId);
+            const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
         if (squareID < 53) {
             const newSquareID = squares[parseInt(squareID) +8].id;
-            const newSquare = document.getElementById(newSquareId);
+            const newSquare = document.getElementById(newSquareID);
             playerChoice(newSquare, newSquareID);
         }
     }, 10)
