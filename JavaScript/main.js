@@ -4,8 +4,8 @@ console.log("hello");
 //What will change in the game
 let squares = [];
 let gameHasEnded = false;
-let plantingFlag = false;
 let minesInGame = 10;
+let flagsInGame = 0;
 
 //Constant variables
 
@@ -42,9 +42,14 @@ const createBoard = () => {
         square.classList.add(randomizeMine[i]);
         board.appendChild(square);
         squares.push(square);
+       
+       
         square.addEventListener("click", (e) => {
             playerChoice(square);
         })
+
+
+    
     }
     //adds numbers to clear squares for amount of mines nearby based on position
     for (i = 0; i < squares.length; i++) {
@@ -165,7 +170,7 @@ const gameIsOver = (square) => {
 
     // Show all mines if player chooses square with mine 
     squares.forEach(square => {
-        if(square.classList.contains("mine")){
+        if (square.classList.contains("mine")){
             square.innerHTML = "boom!";
         }
     })
@@ -174,7 +179,22 @@ const gameIsOver = (square) => {
 
 
 
+// Function to add flag on board
 
+const placeFlag = (square) => {
+    if (gameHasEnded) return;
+    if (square.classList.contains("clicked") && (flagsInGame < minesInGame)){
+        if (!square.classList.contains("flagsInGame")){
+            square.classList.add("flagsInGame");
+            square.innerHTML = "flag!";
+            flagsInGame ++
+        } else {
+            square.classList.remove("flagsInGame");
+            square.innerHTML = "";
+            flagsInGame --
+        }
+    }
+}
 
 
 
