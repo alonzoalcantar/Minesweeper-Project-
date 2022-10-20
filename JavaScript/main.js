@@ -38,7 +38,7 @@ const createBoard = () => {
     //creates divs and randomizes mine placement on board
     for (i = 0; i < 8*8; i++){
         const square = document.createElement("div");
-        square.setAttribute("empty", i);
+        square.setAttribute("id", i);
         square.classList.add(randomizeMine[i]);
         board.appendChild(square);
         squares.push(square);
@@ -83,6 +83,12 @@ createBoard();
 // Function for playerChoice 
 
 const playerChoice = (square) => {
+    let squareID = square.id;
+
+
+
+    if (gameIsActive = false ) return 
+    if (square.classList.contains("clicked") || square.classList.contains("flag")) return;
     if (square.classList.contains("mine")){
         console.log("oops!!Boom!!");
     } else {
@@ -92,10 +98,62 @@ const playerChoice = (square) => {
             square.innerHTML = mineNumber;
             return
         }
+        verifyPlayerChoice(square, squareID);
     }
+    square.classList.add("clicked");
 
 }
 
+
+// Function verifys the  status of near by squares once the player makes a choice 
+
+const verifyPlayerChoice = (square , squareID) => {
+    const boardLeft = (squareID % 8 === 0);
+    const boardRight = (squareID % 8 === 8 -1);
+
+    setTimeout (() => {
+        if (squareID > 0 && !boardLeft) {
+            const newSquareId = squares[parseInt(squareID) -1].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare,newSquareId);
+        }
+        if (squareID > 7 && !boardRight) {
+            const newSquareID = squares[parseInt(squareID) +1 -8].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare, newSquareID);
+        }
+        if (squareID > 8) {
+            const newSquareID = squares[parseInt(squareID) -8].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare, newSquareID);
+        }
+        if (squareID > 9 && !boardLeft) {
+            const newSquareID = squares[parseInt(squareID) -1 -8].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare, newSquareID);
+        }
+        if (squareID < 62 && !boardRight) {
+            const newSquareID = squares[parseInt(squareID) +1].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare, newSquareID);
+        }
+        if (squareID < 54 && !boardLeft) {
+            const newSquareID = squares[parseInt(squareID) -1 +8].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare, newSquareID);
+        }
+        if (squareID < 52 && !boardRight) {
+            const newSquareID = squares[parseInt(squareID) +1 +8].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare, newSquareID);
+        }
+        if (squareID < 53) {
+            const newSquareID = squares[parseInt(squareID) +8].id;
+            const newSquare = document.getElementById(newSquareId);
+            playerChoice(newSquare, newSquareID);
+        }
+    }, 10)
+}
 
 
 
