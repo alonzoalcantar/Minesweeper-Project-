@@ -20,7 +20,7 @@ Technologies Used In Project:
 -Javascript 
 
 
-Deployed Game : https://alonzoalcantar.github.io/Minesweeper-Project-/ 
+Deployed Game : (https://alonzoalcantar.github.io/Minesweeper-Project-/) 
 
 
 
