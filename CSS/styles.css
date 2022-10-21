@@ -1,4 +1,4 @@
-.board{
+.board {
     display: grid;
     grid-template-columns: auto auto auto auto
     auto auto auto auto;
@@ -16,48 +16,65 @@ body {
     background-color: grey;
 }
 h1 {
-    border-style:double;
+    border-style: inset;
     border-width: 5px;
     border-color: gold;
+    background-color: antiquewhite;
 }
-.square{
+.square {
     border-style: solid ;
 
 }
-
-.display{
+.display {
     margin: auto;
     text-align: center;
 }
-
 .controls {
     text-align: center;
     padding: 40px;
 }
 h3 {
-    text-align: left;
+    margin: 20px;
+    color: gold;
+    display: inline-flex;
+    font-size: 50px;
 }
 
 .mine { 
     text-align: center;
     color: red;
+    justify-content: center;
+    font-size: large;
+    background-size: 50px;
     
+
 
 }
 .clear {
     text-align: center;
+    justify-content: center;
+    background-size: 50px;
 
 }
 .clicked {
     background-color: gray;
+    font-size: x-large;
   
 }
 .flagsInGame {
-    background-color: blueviolet;
+    background-color: white;
 }
 .board div {
     height: 50px;
     width: 50px;
     border-style: solid;
     border-color: gold;
+}
+#reset {
+    border-style:inset;
+    border-width: 20px;
+    background-color: green;
+    padding: 20px 20px 20px 20px;
+    color: gold;
+    font-size: larger;
 }

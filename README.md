@@ -1,32 +1,35 @@
 ## Minesweeper
 
+Find the mines scattered across the board. Use flags to mark potential sites and avoid the explosion.... BOOOM!!!!
+
+
+
+Game History -  "First officially released as part of the Microsoft Entertainment Pack 1 in 1990, it was first included in the standard install of Windows 3.1 in 1992, replacing Reversi from Windows 3.0" - Wikipedia Fact 
+
+
 ## WireFrame
 
 ![MyWireFrame](https://i.imgur.com/DXwo56y.png)
 
-//function to start game and begin clock 
-    - clock will run as long as the game is active
+![My Project](https://i.imgur.com/8CIb2bu.png)
 
-//player choice function when player choses a tile 
-    - as the player hovers over a square it will allow them to make a choice
+Technologies Used In Project:
 
-//function to verify move is valid 
-    - makes sure that the square the player chose has not already been selected this game
+-HTML5 
+-CSS
+-Javascript 
 
-//function to check if mine is nearby 
-    - if square is clear, checks if mine is nearby and assigns value to square depending on amount of mines
 
-// function to end game if mine is clicked 
-    - if player choses square with mine, all the mines will be revealed and the game will end
+Deployed Game : 
 
-// function to reset game 
-    - when reset button is clicked then the same will begin again and the board will randomize
 
-// function to radomize mines every game 
-    - places mines randomly across all squares
 
-//function if player places flag 
-    - marks square with a flag to remind plater of there potential mines may be
+Steps Ahead (IceBox Items):
+-Include timer
+-Include tile animation
+-Add audio for certain events (boom!, you win!)
+-Add animation for bombs exploding one at a time 
+-Add higher difficulties (make board larger and add more mines)
 
-// function for time elapsed 
-    - timer on screen for player to be aware of how long their board/game has been active
+
+
