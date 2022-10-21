@@ -15,21 +15,21 @@ Game History -  "First officially released as part of the Microsoft Entertainmen
 
 Technologies Used In Project:
 
--HTML5 
--CSS
--Javascript 
+    * HTML5 
+    * CSS
+    * Javascript 
 
 
-Deployed Game : 
+Deployed Game : https://alonzoalcantar.github.io/Minesweeper-Project-/
 
 
 
-Steps Ahead (IceBox Items):
--Include timer
--Include tile animation
--Add audio for certain events (boom!, you win!)
--Add animation for bombs exploding one at a time 
--Add higher difficulties (make board larger and add more mines)
+* Steps Ahead (IceBox Items):
+    * Include timer
+    * Include tile animation
+    * Add audio for certain events (boom!, you win!)
+    * Add animation for bombs exploding one at a time 
+    * Add higher difficulties (make board larger and add more mines)
 
 
 
